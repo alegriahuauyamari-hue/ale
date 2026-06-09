@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MODA STYLE BOUTIQUE - Catálogo Premium 2026</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/playfair-display@5.0.8/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/montserrat@5.0.8/index.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#D4AF37',
+                        goldLight: '#E8D5A3',
+                        beige: '#F5F0E8',
+                        beigeDark: '#E8DDD0',
+                        charcoal: '#1A1A1A',
+                        softGray: '#F8F8F8'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { scroll-behavior: smooth; }
+        body { font-family: 'Montserrat', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        
+        /* Custom animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-60px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(60px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slowZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.15); }
+        }
+        @keyframes textReveal {
+            0% { opacity: 0; letter-spacing: 0.5em; }
+            100% { opacity: 1; letter-spacing: 0.15em; }
+        }
+        @keyframes goldShimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        @keyframes pulse-gold {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes kenburns {
+            0% { transform: scale(1) translate(0, 0); }
+            50% { transform: scale(1.1) translate(-2%, -1%); }
+            100% { transform: scale(1) translate(0, 0); }
+        }
+        @keyframes fadeSequence1 {
+            0%, 100% { opacity: 0; }
+            10%, 30% { opacity: 1; }
+        }
+        @keyframes fadeSequence2 {
+            0%, 100% { opacity: 0; }
+            35%, 55% { opacity: 1; }
+        }
+        @keyframes fadeSequence3 {
+            0%, 100% { opacity: 0; }
+            60%, 80% { opacity: 1; }
+        }
+        @keyframes fadeSequence4 {
+            0%, 100% { opacity: 0; }
+            85%, 100% { opacity: 1; }
+        }
+        
+        .animate-fade-up { animation: fadeInUp 1.2s ease-out forwards; }
+        .animate-fade-in { animation: fadeIn 1.5s ease-out forwards; }
+        .animate-slide-left { animation: slideInLeft 1.2s ease-out forwards; }
+        .animate-slide-right { animation: slideInRight 1.2s ease-out forwards; }
+        .animate-slow-zoom { animation: slowZoom 20s ease-in-out infinite alternate; }
+        .animate-kenburns { animation: kenburns 12s ease-in-out infinite; }
+        .animate-text-reveal { animation: textReveal 2s ease-out forwards; }
+        .animate-gold-shimmer {
+            background: linear-gradient(90deg, #D4AF37 0%, #FFF8DC 50%, #D4AF37 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: goldShimmer 4s linear infinite;
+        }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .animate-pulse-gold { animation: pulse-gold 2s ease-in-out infinite; }
+        
+        .video-seq-1 { animation: fadeSequence1 12s ease-in-out infinite; }
+        .video-seq-2 { animation: fadeSequence2 12s ease-in-out infinite; }
+        .video-seq-3 { animation: fadeSequence3 12s ease-in-out infinite; }
+        .video-seq-4 { animation: fadeSequence4 12s ease-in-out infinite; }
+        
+        .page-section {
+            min-height: 100vh;
+            scroll-snap-align: start;
+        }
+        html { scroll-snap-type: y mandatory; }
+        
+        .gold-border { border: 1px solid #D4AF37; }
+        .gold-line { height: 1px; background: linear-gradient(90deg, transparent, #D4AF37, transparent); }
+        
+        .product-card:hover .product-img { transform: scale(1.05); }
+        .product-img { transition: transform 0.8s ease; }
+        
+        .nav-dot.active { background-color: #D4AF37; transform: scale(1.3); }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #1A1A1A; }
+        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 3px; }
+        
+        .video-overlay {
+            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
+        }
+    </style>
+</head>
+<body class="bg-white text-charcoal overflow-x-hidden">
+
+    <!-- Navigation Dots -->
+    <nav class="fixed right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3">
+        <a href="#cover" class="nav-dot w-2 h-2 rounded-full bg-gray-400 transition-all duration-300 hover:bg-gold" data-section="cover"></a>
+        <a href="#collection1" class="nav-dot w-2 h-2 rounded-full bg-gray-400 transition-all duration-300 hover:bg-gold" data-section="collection1"></a>
+        <a href="#collection2" class="nav-dot w-2 h-2 rounded-full bg-gray-400 transition-all duration-300 hover:bg-gold" data-section="collection2"></a>
+        <a href="#collection3" class="nav-dot w-2 h-2 rounded-full bg-gray-400 transition-all duration-300 hover:bg-gold" data-section="collection3"></a>
+        <a href="#collection4" class="nav-dot w-2 h-2 rounded-full bg-gray-400 transition-all duration-300 hover:bg-gold" data-section="collection4"></a>
+        <a href="#video-promo" class="nav-dot w-2 h-2 rounded-full bg-gray-400 transition-all duration-300 hover:bg-gold" data-section="video-promo"></a>
+        <a href="#back-cover" class="nav-dot w-2 h-2 rounded-full bg-gray-400 transition-all duration-300 hover:bg-gold" data-section="back-cover"></a>
+    </nav>
+
+    <!-- ==================== COVER ==================== -->
+    <section id="cover" class="page-section relative h-screen w-full overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="https://image.qwenlm.ai/public_source/76a81d22-7022-4715-a124-4a5e2d15af14/1f3967ffb-148b-4d15-bd03-31ea9592ce45.png" 
+                 alt="Cover Model" 
+                 class="w-full h-full object-cover animate-slow-zoom">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50"></div>
+        
+        <!-- Logo Top -->
+        <div class="absolute top-0 left-0 right-0 pt-8 px-8 md:px-16 flex justify-between items-center z-20">
+            <div class="text-white">
+                <p class="font-sans text-[10px] tracking-[0.3em] uppercase text-white/70">Est. 2026</p>
+            </div>
+            <div class="text-center">
+                <h1 class="font-serif text-white text-lg md:text-2xl tracking-[0.2em]">MODA STYLE</h1>
+                <p class="font-sans text-[8px] md:text-[10px] tracking-[0.4em] text-gold uppercase">Boutique</p>
+            </div>
+            <div class="text-white">
+                <p class="font-sans text-[10px] tracking-[0.3em] uppercase text-white/70">Catálogo 2026</p>
+            </div>
+        </div>
+
+        <!-- Main Title -->
+        <div class="absolute inset-0 flex flex-col items-center justify-center z-10 text-center px-4">
+            <div class="gold-line w-24 md:w-32 mb-8 animate-fade-in"></div>
+            <h1 class="font-serif text-white text-5xl md:text-8xl lg:text-9xl tracking-wider mb-4 animate-fade-up" style="animation-delay: 0.3s;">
+                MODA STYLE
+            </h1>
+            <h2 class="font-sans text-gold text-lg md:text-3xl tracking-[0.5em] uppercase mb-8 animate-fade-up" style="animation-delay: 0.6s;">
+                BOUTIQUE
+            </h2>
+            <div class="gold-line w-24 md:w-32 mb-8 animate-fade-in" style="animation-delay: 0.9s;"></div>
+            <p class="font-serif text-white text-xl md:text-3xl italic animate-fade-up" style="animation-delay: 1.2s;">
+                "Viste tu mejor versión"
+            </p>
+            <p class="font-sans text-white/60 text-xs md:text-sm tracking-[0.3em] uppercase mt-6 animate-fade-up" style="animation-delay: 1.5s;">
+                Nueva Colección · Primavera / Verano 2026
+            </p>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 animate-float">
+            <p class="font-sans text-white/60 text-[10px] tracking-[0.3em] uppercase">Descubre</p>
+            <div class="w-[1px] h-12 bg-gradient-to-b from-gold to-transparent"></div>
+        </div>
+    </section>
+
+    <!-- ==================== COLLECTION 1: URBAN MEN ==================== -->
+    <section id="collection1" class="page-section relative bg-white">
+        <div class="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+            <!-- Image Side -->
+            <div class="relative h-[60vh] lg:h-screen overflow-hidden">
+                <img src="https://image.qwenlm.ai/public_source/76a81d22-7022-4715-a124-4a5e2d15af14/1db1000b7-27b0-4018-aadd-579ee6dd5d71.png" 
+                     alt="Urban Men Collection" 
+                     class="w-full h-full object-cover product-img">
+                <div class="absolute top-6 left-6 bg-white/90 backdrop-blur-sm px-4 py-2">
+                    <p class="font-sans text-[10px] tracking-[0.3em] uppercase text-charcoal">Colección Hombre</p>
+                </div>
+            </div>
+            
+            <!-- Content Side -->
+            <div class="flex flex-col justify-center px-8 md:px-16 lg:px-24 py-12 lg:py-20">
+                <div class="max-w-lg">
+                    <p class="font-sans text-gold text-xs tracking-[0.4em] uppercase mb-4">Colección 01</p>
+                    <h2 class="font-serif text-4xl md:text-6xl text-charcoal mb-6 leading-tight">Urban<br>Essentials</h2>
+                    <div class="gold-line w-16 mb-6"></div>
+                    <p class="font-sans text-gray-600 text-sm leading-relaxed mb-8">
+                        Estilo urbano contemporáneo para el hombre moderno. Prendas oversize, 
+                        jeans wide leg y polos de corte relajado que definen la nueva era de la moda masculina.
+                    </p>
+                    
+                    <!-- Product Details -->
+                    <div class="border border-gray-200 p-6 mb-8">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <p class="font-sans text-[10px] tracking-[0.2em] uppercase text-gray-400 mb-1">Producto</p>
+                                <p class="font-serif text-lg text-charcoal">Polo Oversize Premium</p>
+                            </div>
+                            <div>
+                                <p class="font-sans text-[10px] tracking-[0.2em] uppercase text-gray-400 mb-1">Código</p>
+                                <p class="font-sans text-sm text-charcoal">MSB-UM-2026-001</p>
+                            </div>
+                            <div>
+                                <p class="font-sans text-[10px] tracking-[0.2em] uppercase text-gray-400 mb-1">Precio</p>
+                                <p class="font-serif text-2xl text-gold">S/ 129.90</p>
+                            </div>
+                            <div>
+                                <p class="font-sans text-[10px] tracking-[0.2em] uppercase text-gray-400 mb-1">Tallas</p>
+                                <p class="font-sans text-sm text-charcoal">S · M · L · XL</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social -->
+                    <div class="flex items-center gap-4">
+                        <p class="font-sans text-[10px] tracking-[0.2em] uppercase text-gray-400">Síguenos</p>
+                        <div class="flex gap-3">
+                            <a href="#" class="w-8 h-8 border border-gray-300 flex items-center justify-center hover:border-gold hover:text-gold transition-colors">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            </a>
+                            <a href="#" class="w-8 h-8 border border-gray-300 flex items-center justify-center hover:border-gold hover:text-gold transition-colors">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                            </a>
+                            <a href="#" class="w-8 h-8 border border-gray-300 flex items-center justify-center hover:border-gold hover:text-gold transition-colors">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== COLLECTION 2: CHIC WOMEN ==================== -->
+    <section id="collection2" class="page-section relative bg-beige">
+        <div class="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+            <!-- Content Side -->
+            <div class="flex flex-col justify-center px-8 md:px-16 lg:px-24 py-12 lg:py-20 order-2 lg:order-1">
+                <div class="max-w-lg">
+                    <p class="font-sans text-gold text-xs tracking-[0.4em] uppercase mb-4">Colección 02</p>
+                    <h2 class="font-serif text-4xl md:text-6xl text-charcoal mb-6 leading-tight">Chic<br>Contemporáneo</h2>
+                    <div class="gold-line w-16 mb-6"></div>
+                    <p class="font-sans text-gray-600 text-sm leading-relaxed mb-8">
+                        Elegancia casual para la mujer moderna. Blazers estructurados, vestidos fluidos 
+                        y conjuntos que combinan sofisticación con comodidad en cada detalle.
+                    </p>
+                    
+                    <!-- Product Details -->
+                    <div class="border border-gray-300 p-6 mb-8 bg-white/50">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <p class="font-sans text-[10px] tracking-[0.2em] uppercase text-gray-400 mb-1">Producto</p>
+                                <p class="font-serif text-lg text-charcoal">Blazer Modern Fit</p>
+                            </div>
+                            <div>
+                                <p class="font-sans text-[10px] tracking-[0.2em] uppercase text-gray-400 mb-1">Código</p>
+                                <p class="font-sans text-sm text-charcoal">MSB-CW-2026-002</p>
+                            </div>
+                            <div>
+                                <p class="font-sans text-[10px] tracking-[0.2em] uppercase text-gray-400 mb-1">Precio</p>
+                                <p class="font-serif text-2xl text-gold">S/ 189.90</p>
+                            </div>
+                            <div>
+                                <p class="font-sans text-[10px] tracking-[0.2em] uppercase text-gray-400 mb-1">Tallas</p>
+                                <p class="font-sans text-sm text-charcoal">XS · S · M · L</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social -->
+                    <div class="flex items-center gap-4">
+                        <p class="font-sans text-[10px] tracking-[0.2em] uppercase text-gray-400">Síguenos</p>
+                        <div class="flex gap-3">
+                            <a href="#" class="w-8 h-8 border border-gray-300 flex items-center justify-center hover:border-gold hover:text-gold transition-colors">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            </a>
+                            <a href="#" class="w-8 h-8 border border-gray-300 flex items-center justify-center hover:border-gold hover:text-gold transition-colors">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            </a>
+                            <a href="#" class="w-8 h-8 border border-gray-300 flex items-center justify-center hover:border-gold hover:text-gold transition-colors">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Image Side -->
+            <div class="relative h-[60vh] lg:h-screen overflow-hidden order-1 lg:order-2">
+                <img src="https://image.qwenlm.ai/public_source/76a81d22-7022-4715-a124-4a5e2d15af14/186e9612a-d691-49e9-9465-e42c22b0d9ab.png" 
+                     alt="Chic Women Collection" 
+                     class="w-full h-full object-cover product-img">
+                <div class="absolute top-6 right-6 bg-white/90 backdrop-blur-sm px-4 py-2">
+                    <p class="font-sans text-[10px] tracking-[0.3em] uppercase text-charcoal">Colección Mujer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== COLLECTION 3: STREET STYLE ==================== -->
+    <section id="collection3" class="page-section relative bg-charcoal text-white">
+        <div class="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+            <!-- Image Side -->
+            <div class="relative h-[60vh] lg:h-screen overflow-hidden">
+                <img src="https://image.qwenlm.ai/public_source/76a81d22-7022-4715-a124-4a5e2d15af14/1484dedd4-41c5-491d-a0c9-69fb8d117a91.png" 
+                     alt="Street Style Collection" 
+                     class="w-full h-full object-cover product-img">
+                <div class="absolute top-6 left-6 bg-black/70 backdrop-blur-sm px-4 py-2">
+                    <p class="font-sans text-[10px] tracking-[0.3em] uppercase text-gold">Colección Unisex</p>
+                </div>
+            </div>
+            
+            <!-- Content Side -->
+            <div class="flex flex-col justify-center px-8 md:px-16 lg:px-24 py-12 lg:py-20">
+                <div class="max-w-lg">
+                    <p class="font-sans text-gold text-xs tracking-[0.4em] uppercase mb-4">Colección 03</p>
+                    <h2 class="font-serif text-4xl md:text-6xl text-white mb-6 leading-tight">Street<br>Attitude</h2>
+                    <div class="gold-line w-16 mb-6"></div>
+                    <p class="font-sans text-gray-300 text-sm leading-relaxed mb-8">
+                        La actitud urbana en su máxima expresión. Hoodies premium, pantalones cargo 
+                        y casacas de denim y cuero para quienes viven la ciudad con estilo propio.
+                    </p>
+                    
+                    <!-- Product Details -->
+                    <div class="border border-gray-700 p-6 mb-8">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <p class="font-sans text-[10px] tracking-[0.2em] uppercase text-gray-500 mb-1">Producto</p>
+                                <p class="font-serif text-lg text-white">Hoodie Premium + Cargo</p>
+                            </div>
+                            <div>
+                                <p class="font-sans text-[10px] tracking-[0.2em] uppercase text-gray-500 mb-1">Código</p>
+                                <p class="font-sans text-sm text-white">MSB-SS-2026-003</p>
+                            </div>
+                            <div>
+                                <p class="font-sans text-[10px] tracking-[0.2em] uppercase text-gray-500 mb-1">Precio</p>
+                                <p class="font-serif text-2xl text-gold">S/ 219.90</p>
+                            </div>
+                            <div>
+                                <p class="font-sans text-[10px] tracking-[0.2em] uppercase text-gray-500 mb-1">Tallas</p>
+                                <p class="font-sans text-sm text-white">S · M · L · XL · XXL</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social -->
+                    <div class="flex items-center gap-4">
+                        <p class="font-sans text-[10px] tracking-[0.2em] uppercase text-gray-500">Síguenos</p>
+                        <div class="flex gap-3">
+                            <a href="#" class="w-8 h-8 border border-gray-600 flex items-center justify-center hover:border-gold hover:text-gold transition-colors">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            </a>
+                            <a href="#" class="w-8 h-8 border border-gray-600 flex items-center justify-center hover:border-gold hover:text-gold transition-colors">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                            </a>
+                            <a href="#" class="w-8 h-8 border border-gray-600 flex items-center justify-center hover:border-gold hover:text-gold transition-colors">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.441 16.892c-2.102.144-6.784.144-8.883 0C3.337 16.736 2.899 15.622 2.899 12c0-3.623.438-4.736 2.659-4.892 2.099-.144 6.782-.144 8.883 0 2.221.156 2.659 1.269 2.659 4.892 0 3.622-.438 4.736-2.659 4.892zM10 9.658l4.917 2.338L10 14.342V9.658z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== COLLECTION 4: ACCESSORIES ==================== -->
+    <section id="collection4" class="page-section relative bg-softGray">
+        <div class="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+            <!-- Content Side -->
+            <div class="flex flex-col justify-center px-8 md:px-16 lg:px-24 py-12 lg:py-20 order-2 lg:order-1">
+                <div class="max-w-lg">
+                    <p class="font-sans text-gold text-xs tracking-[0.4em] uppercase mb-4">Colección 04</p>
+                    <h2 class="font-serif text-4xl md:text-6xl text-charcoal mb-6 leading-tight">Details<br>& Accents</h2>
+                    <div class="gold-line w-16 mb-6"></div>
+                    <p class="font-sans text-gray-600 text-sm leading-relaxed mb-8">
+                        Los detalles que completan tu look. Zapatillas minimalistas, casacas de cuero 
+                        y accesorios que elevan cualquier outfit a otro nivel de sofisticación.
+                    </p>
+                    
+                    <!-- Product Details -->
+                    <div class="border border-gray-200 p-6 mb-8 bg-white">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <p class="font-sans text-[10px] tracking-[0.2em] uppercase text-gray-400 mb-1">Producto</p>
+                                <p class="font-serif text-lg text-charcoal">Casaca Cuero + Sneakers</p>
+                            </div>
+                            <div>
+                                <p class="font-sans text-[10px] tracking-[0.2em] uppercase text-gray-400 mb-1">Código</p>
+                                <p class="font-sans text-sm text-charcoal">MSB-AC-2026-004</p>
+                            </div>
+                            <div>
+                                <p class="font-sans text-[10px] tracking-[0.2em] uppercase text-gray-400 mb-1">Precio</p>
+                                <p class="font-serif text-2xl text-gold">S/ 299.90</p>
+                            </div>
+                            <div>
+                                <p class="font-sans text-[10px] tracking-[0.2em] uppercase text-gray-400 mb-1">Tallas</p>
+                                <p class="font-sans text-sm text-charcoal">36 · 38 · 40 · 42 · 44</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social -->
+                    <div class="flex items-center gap-4">
+                        <p class="font-sans text-[10px] tracking-[0.2em] uppercase text-gray-400">Síguenos</p>
+                        <div class="flex gap-3">
+                            <a href="#" class="w-8 h-8 border border-gray-300 flex items-center justify-center hover:border-gold hover:text-gold transition-colors">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            </a>
+                            <a href="#" class="w-8 h-8 border border-gray-300 flex items-center justify-center hover:border-gold hover:text-gold transition-colors">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Image Side -->
+            <div class="relative h-[60vh] lg:h-screen overflow-hidden order-1 lg:order-2">
+                <img src="https://image.qwenlm.ai/public_source/76a81d22-7022-4715-a124-4a5e2d15af14/1506ab960-0d05-46b9-9368-618640495e54.png" 
+                     alt="Accessories Collection" 
+                     class="w-full h-full object-cover product-img">
+                <div class="absolute top-6 right-6 bg-white/90 backdrop-blur-sm px-4 py-2">
+                    <p class="font-sans text-[10px] tracking-[0.3em] uppercase text-charcoal">Accesorios & Calzado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== VIDEO PROMO SECTION ==================== -->
+    <section id="video-promo" class="page-section relative h-screen w-full overflow-hidden bg-black">
+        <!-- Animated Background Sequence -->
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 video-seq-1">
+                <img src="https://image.qwenlm.ai/public_source/76a81d22-7022-4715-a124-4a5e2d15af14/1f3967ffb-148b-4d15-bd03-31ea9592ce45.png" 
+                     class="w-full h-full object-cover animate-kenburns" alt="">
+            </div>
+            <div class="absolute inset-0 video-seq-2">
+                <img src="https://image.qwenlm.ai/public_source/76a81d22-7022-4715-a124-4a5e2d15af14/1db1000b7-27b0-4018-aadd-579ee6dd5d71.png" 
+                     class="w-full h-full object-cover animate-kenburns" alt="">
+            </div>
+            <div class="absolute inset-0 video-seq-3">
+                <img src="https://image.qwenlm.ai/public_source/76a81d22-7022-4715-a124-4a5e2d15af14/1484dedd4-41c5-491d-a0c9-69fb8d117a91.png" 
+                     class="w-full h-full object-cover animate-kenburns" alt="">
+            </div>
+            <div class="absolute inset-0 video-seq-4">
+                <img src="https://image.qwenlm.ai/public_source/76a81d22-7022-4715-a124-4a5e2d15af14/186e9612a-d691-49e9-9465-e42c22b0d9ab.png" 
+                     class="w-full h-full object-cover animate-kenburns" alt="">
+            </div>
+        </div>
+        
+        <!-- Video Overlay -->
+        <div class="absolute inset-0 video-overlay"></div>
+        
+        <!-- Cinematic Bars -->
+        <div class="absolute top-0 left-0 right-0 h-[8vh] bg-black z-10"></div>
+        <div class="absolute bottom-0 left-0 right-0 h-[8vh] bg-black z-10"></div>
+        
+        <!-- Play Button & Video Label -->
+        <div class="absolute top-[12vh] left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full border border-gold/50 flex items-center justify-center animate-pulse-gold">
+                <svg class="w-4 h-4 text-gold ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <p class="font-sans text-gold text-[10px] tracking-[0.4em] uppercase">Video Promocional · 30s</p>
+        </div>
+
+        <!-- Animated Text Content -->
+        <div class="absolute inset-0 flex flex-col items-center justify-center z-20 text-center px-4">
+            <!-- Text 1: Nueva Colección 2026 -->
+            <div class="video-seq-1 absolute inset-0 flex flex-col items-center justify-center">
+                <p class="font-sans text-gold text-xs md:text-sm tracking-[0.6em] uppercase mb-4">Presentamos</p>
+                <h2 class="font-serif text-white text-4xl md:text-7xl lg:text-8xl tracking-wider">
+                    Nueva Colección
+                </h2>
+                <h3 class="font-serif text-gold text-5xl md:text-8xl lg:text-9xl tracking-wider mt-2">
+                    2026
+                </h3>
+            </div>
+            
+            <!-- Text 2: MODA STYLE BOUTIQUE -->
+            <div class="video-seq-2 absolute inset-0 flex flex-col items-center justify-center">
+                <div class="gold-line w-24 mb-6"></div>
+                <h2 class="font-serif text-white text-3xl md:text-6xl lg:text-7xl tracking-[0.15em]">
+                    MODA STYLE
+                </h2>
+                <h3 class="font-sans text-gold text-lg md:text-3xl tracking-[0.5em] uppercase mt-2">
+                    BOUTIQUE
+                </h3>
+                <div class="gold-line w-24 mt-6"></div>
+            </div>
+            
+            <!-- Text 3: Tendencias que hablan por ti -->
+            <div class="video-seq-3 absolute inset-0 flex flex-col items-center justify-center">
+                <p class="font-serif text-white text-2xl md:text-5xl lg:text-6xl italic leading-tight max-w-4xl">
+                    "Tendencias que<br>hablan por ti"
+                </p>
+            </div>
+            
+            <!-- Text 4: Final Message -->
+            <div class="video-seq-4 absolute inset-0 flex flex-col items-center justify-center">
+                <div class="gold-line w-16 mb-6"></div>
+                <p class="font-serif text-white text-xl md:text-3xl lg:text-4xl tracking-wide">
+                    Descubre tu estilo.
+                </p>
+                <p class="font-serif text-gold text-xl md:text-3xl lg:text-4xl tracking-wide mt-2">
+                    Vive la moda.
+                </p>
+                <div class="gold-line w-16 mt-6"></div>
+            </div>
+        </div>
+
+        <!-- Video Progress Bar -->
+        <div class="absolute bottom-[8vh] left-0 right-0 h-[2px] bg-white/10 z-20">
+            <div class="h-full bg-gold animate-[progress_12s_linear_infinite]" style="width: 100%; animation: progress 12s linear infinite;"></div>
+        </div>
+        <style>
+            @keyframes progress {
+                0% { width: 0%; }
+                100% { width: 100%; }
+            }
+        </style>
+    </section>
+
+    <!-- ==================== BACK COVER ==================== -->
+    <section id="back-cover" class="page-section relative h-screen w-full overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="https://image.qwenlm.ai/public_source/76a81d22-7022-4715-a124-4a5e2d15af14/1487cee15-2cde-4bcf-aba9-da9d6e8068a4.png" 
+                 alt="Back Cover" 
+                 class="w-full h-full object-cover">
+        </div>
+        <div class="absolute inset-0 bg-black/60"></div>
+        
+        <!-- Content -->
+        <div class="relative z-10 h-full flex flex-col items-center justify-center px-8 md:px-16 text-center">
+            <!-- Logo -->
+            <div class="mb-8">
+                <h1 class="font-serif text-white text-3xl md:text-5xl tracking-[0.2em] mb-2">MODA STYLE</h1>
+                <p class="font-sans text-gold text-xs md:text-sm tracking-[0.5em] uppercase">Boutique</p>
+            </div>
+            
+            <div class="gold-line w-24 mb-8"></div>
+            
+            <!-- Main Message -->
+            <p class="font-serif text-white text-xl md:text-3xl italic max-w-2xl leading-relaxed mb-12">
+                "Moda que inspira confianza,<br>estilo que marca tendencia."
+            </p>
+            
+            <!-- Contact Info Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 mb-12 max-w-4xl w-full">
+                <!-- WhatsApp -->
+                <div class="flex flex-col items-center gap-2">
+                    <div class="w-12 h-12 border border-gold/50 rounded-full flex items-center justify-center mb-2">
+                        <svg class="w-6 h-6 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    </div>
+                    <p class="font-sans text-[10px] tracking-[0.3em] uppercase text-white/60 mb-1">WhatsApp</p>
+                    <p class="font-sans text-white text-sm">+51 987 654 321</p>
+                </div>
+                
+                <!-- Location -->
+                <div class="flex flex-col items-center gap-2">
+                    <div class="w-12 h-12 border border-gold/50 rounded-full flex items-center justify-center mb-2">
+                        <svg class="w-6 h-6 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    </div>
+                    <p class="font-sans text-[10px] tracking-[0.3em] uppercase text-white/60 mb-1">Ubicación</p>
+                    <p class="font-sans text-white text-sm">Av. Javier Prado 1234</p>
+                    <p class="font-sans text-white text-sm">San Isidro, Lima</p>
+                </div>
+                
+                <!-- Social Media -->
+                <div class="flex flex-col items-center gap-2">
+                    <div class="w-12 h-12 border border-gold/50 rounded-full flex items-center justify-center mb-2">
+                        <svg class="w-6 h-6 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </div>
+                    <p class="font-sans text-[10px] tracking-[0.3em] uppercase text-white/60 mb-1">Redes Sociales</p>
+                    <p class="font-sans text-white text-sm">@modastyleboutique</p>
+                </div>
+            </div>
+            
+            <!-- Social Icons Row -->
+            <div class="flex gap-4 mb-12">
+                <a href="#" class="w-10 h-10 border border-gold/30 flex items-center justify-center hover:bg-gold hover:text-black transition-all duration-300 text-gold">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="#" class="w-10 h-10 border border-gold/30 flex items-center justify-center hover:bg-gold hover:text-black transition-all duration-300 text-gold">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                </a>
+                <a href="#" class="w-10 h-10 border border-gold/30 flex items-center justify-center hover:bg-gold hover:text-black transition-all duration-300 text-gold">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                </a>
+                <a href="#" class="w-10 h-10 border border-gold/30 flex items-center justify-center hover:bg-gold hover:text-black transition-all duration-300 text-gold">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.441 16.892c-2.102.144-6.784.144-8.883 0C3.337 16.736 2.899 15.622 2.899 12c0-3.623.438-4.736 2.659-4.892 2.099-.144 6.782-.144 8.883 0 2.221.156 2.659 1.269 2.659 4.892 0 3.622-.438 4.736-2.659 4.892zM10 9.658l4.917 2.338L10 14.342V9.658z"/></svg>
+                </a>
+            </div>
+            
+            <!-- Footer -->
+            <div class="gold-line w-24 mb-6"></div>
+            <p class="font-sans text-white/40 text-[10px] tracking-[0.3em] uppercase">
+                © 2026 MODA STYLE BOUTIQUE · Todos los derechos reservados
+            </p>
+            <p class="font-sans text-white/30 text-[9px] tracking-[0.2em] mt-2">
+                Diseñado con pasión en Lima, Perú
+            </p>
+        </div>
+    </section>
+
+    <script>
+        // Navigation dots active state
+        const sections = document.querySelectorAll('.page-section');
+        const navDots = document.querySelectorAll('.nav-dot');
+        
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navDots.forEach(dot => {
+                        dot.classList.remove('active');
+                        if (dot.getAttribute('data-section') === id) {
+                            dot.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+        
+        sections.forEach(section => observer.observe(section));
+        
+        // Smooth scroll for nav dots
+        navDots.forEach(dot => {
+            dot.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = dot.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Parallax effect on scroll for images
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const images = document.querySelectorAll('.product-img');
+            images.forEach(img => {
+                const rect = img.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    const speed = 0.1;
+                    const yPos = -(rect.top * speed);
+                    img.style.transform = `translateY(${yPos}px) scale(1.05)`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
